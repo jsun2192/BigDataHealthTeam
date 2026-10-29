@@ -1,0 +1,172 @@
+seed 0: full-train CET
+seed 0: 5-fold cross-fitting
+    fold 1/5 done
+    fold 2/5 done
+    fold 3/5 done
+    fold 4/5 done
+    fold 5/5 done
+seed 0 finished in 31.5 min
+seed 1: full-train CET
+seed 1: 5-fold cross-fitting
+    fold 1/5 done
+    fold 2/5 done
+    fold 3/5 done
+    fold 4/5 done
+    fold 5/5 done
+seed 1 finished in 30.7 min
+seed 2: full-train CET
+seed 2: 5-fold cross-fitting
+    fold 1/5 done
+    fold 2/5 done
+    fold 3/5 done
+    fold 4/5 done
+    fold 5/5 done
+seed 2 finished in 30.7 min
+seed 0: full-train CET
+seed 0: 5-fold cross-fitting
+    fold 1/5 done
+    fold 2/5 done
+    fold 3/5 done
+    fold 4/5 done
+    fold 5/5 done
+seed 0 finished in 12.8 min
+seed 1: full-train CET
+seed 1: 5-fold cross-fitting
+    fold 1/5 done
+    fold 2/5 done
+    fold 3/5 done
+    fold 4/5 done
+    fold 5/5 done
+seed 1 finished in 11.6 min
+seed 2: full-train CET
+seed 2: 5-fold cross-fitting
+    fold 1/5 done
+    fold 2/5 done
+    fold 3/5 done
+    fold 4/5 done
+    fold 5/5 done
+seed 2 finished in 13.5 min
+Seeds: [0, 1, 2]   events per seed: 2   test rows per seed: 8000
+
+Mean over events, then mean ± SD over seeds
+arm                               AUC          AUPRC          Brier            ECE
+A_cet                   0.654 ± 0.004  0.648 ± 0.005  0.230 ± 0.001  0.065 ± 0.007
+B_xgb_s                 0.576 ± 0.002  0.591 ± 0.003  0.323 ± 0.001  0.261 ± 0.003
+C_xgb_soft              0.671 ± 0.003  0.655 ± 0.006  0.233 ± 0.001  0.096 ± 0.006
+D_xgb_soft_cetfeat      0.667 ± 0.004  0.653 ± 0.005  0.234 ± 0.001  0.099 ± 0.005
+O_xgb_oracle            0.682 ± 0.002  0.665 ± 0.005  0.217 ± 0.001  0.015 ± 0.001
+
+Per event AUC (mean over seeds)
+A_cet                  event0: 0.760  event1: 0.547
+B_xgb_s                event0: 0.635  event1: 0.517
+C_xgb_soft             event0: 0.776  event1: 0.566
+D_xgb_soft_cetfeat     event0: 0.770  event1: 0.564
+O_xgb_oracle           event0: 0.785  event1: 0.578
+
+Soft label quality on censored TRAINING rows (out-of-fold, vs hidden true c)
+seed 0 event 0: AUC 0.846  mean w | c=1 0.590  mean w | c=0 0.393  Brier 0.180 (labeling all censored as 0: 0.345)
+seed 0 event 1: AUC 0.741  mean w | c=1 0.531  mean w | c=0 0.415  Brier 0.204 (labeling all censored as 0: 0.339)
+seed 1 event 0: AUC 0.850  mean w | c=1 0.581  mean w | c=0 0.387  Brier 0.179 (labeling all censored as 0: 0.341)
+seed 1 event 1: AUC 0.744  mean w | c=1 0.536  mean w | c=0 0.416  Brier 0.203 (labeling all censored as 0: 0.345)
+seed 2 event 0: AUC 0.848  mean w | c=1 0.592  mean w | c=0 0.387  Brier 0.178 (labeling all censored as 0: 0.342)
+seed 2 event 1: AUC 0.739  mean w | c=1 0.529  mean w | c=0 0.413  Brier 0.203 (labeling all censored as 0: 0.347)
+
+Paired bootstrap, 1000 resamples of test patients (difference, 95% CI)
+seed0  event0 C_xgb_soft − B_xgb_s AUC: +0.1473 [+0.1350, +0.1593]
+seed0  event0 C_xgb_soft − B_xgb_s Brier: -0.0924 [-0.1011, -0.0844]
+seed0  event1 C_xgb_soft − B_xgb_s AUC: +0.0499 [+0.0373, +0.0624]
+seed0  event1 C_xgb_soft − B_xgb_s Brier: -0.0930 [-0.1018, -0.0851]
+seed0  event0 C_xgb_soft − A_cet AUC: +0.0107 [+0.0068, +0.0157]
+seed0  event0 C_xgb_soft − A_cet Brier: +0.0037 [+0.0023, +0.0051]
+seed0  event1 C_xgb_soft − A_cet AUC: +0.0219 [+0.0084, +0.0355]
+seed0  event1 C_xgb_soft − A_cet Brier: +0.0032 [+0.0014, +0.0051]
+seed0  event0 D_xgb_soft_cetfeat − C_xgb_soft AUC: -0.0032 [-0.0052, -0.0012]
+seed0  event0 D_xgb_soft_cetfeat − C_xgb_soft Brier: +0.0013 [+0.0008, +0.0018]
+seed0  event1 D_xgb_soft_cetfeat − C_xgb_soft AUC: -0.0032 [-0.0076, +0.0010]
+seed0  event1 D_xgb_soft_cetfeat − C_xgb_soft Brier: +0.0015 [+0.0011, +0.0020]
+seed1  event0 C_xgb_soft − B_xgb_s AUC: +0.1483 [+0.1377, +0.1600]
+seed1  event0 C_xgb_soft − B_xgb_s Brier: -0.0965 [-0.1045, -0.0885]
+seed1  event1 C_xgb_soft − B_xgb_s AUC: +0.0439 [+0.0300, +0.0574]
+seed1  event1 C_xgb_soft − B_xgb_s Brier: -0.0823 [-0.0905, -0.0734]
+seed1  event0 C_xgb_soft − A_cet AUC: +0.0141 [+0.0095, +0.0186]
+seed1  event0 C_xgb_soft − A_cet Brier: +0.0012 [-0.0002, +0.0027]
+seed1  event1 C_xgb_soft − A_cet AUC: +0.0191 [+0.0050, +0.0342]
+seed1  event1 C_xgb_soft − A_cet Brier: +0.0047 [+0.0030, +0.0064]
+seed1  event0 D_xgb_soft_cetfeat − C_xgb_soft AUC: -0.0058 [-0.0076, -0.0036]
+seed1  event0 D_xgb_soft_cetfeat − C_xgb_soft Brier: +0.0009 [+0.0004, +0.0013]
+seed1  event1 D_xgb_soft_cetfeat − C_xgb_soft AUC: +0.0009 [-0.0031, +0.0048]
+seed1  event1 D_xgb_soft_cetfeat − C_xgb_soft Brier: +0.0016 [+0.0012, +0.0020]
+seed2  event0 C_xgb_soft − B_xgb_s AUC: +0.1272 [+0.1152, +0.1392]
+seed2  event0 C_xgb_soft − B_xgb_s Brier: -0.0952 [-0.1041, -0.0870]
+seed2  event1 C_xgb_soft − B_xgb_s AUC: +0.0532 [+0.0406, +0.0651]
+seed2  event1 C_xgb_soft − B_xgb_s Brier: -0.0846 [-0.0929, -0.0768]
+seed2  event0 C_xgb_soft − A_cet AUC: +0.0225 [+0.0177, +0.0273]
+seed2  event0 C_xgb_soft − A_cet Brier: -0.0008 [-0.0024, +0.0007]
+seed2  event1 C_xgb_soft − A_cet AUC: +0.0135 [+0.0008, +0.0260]
+seed2  event1 C_xgb_soft − A_cet Brier: +0.0052 [+0.0036, +0.0069]
+seed2  event0 D_xgb_soft_cetfeat − C_xgb_soft AUC: -0.0076 [-0.0098, -0.0052]
+seed2  event0 D_xgb_soft_cetfeat − C_xgb_soft Brier: +0.0020 [+0.0014, +0.0025]
+seed2  event1 D_xgb_soft_cetfeat − C_xgb_soft AUC: -0.0022 [-0.0069, +0.0023]
+seed2  event1 D_xgb_soft_cetfeat − C_xgb_soft Brier: +0.0012 [+0.0008, +0.0016]
+Seeds: [0, 1, 2]   events per seed: 2   test rows per seed: 8000
+
+Mean over events, then mean ± SD over seeds
+arm                               AUC          AUPRC          Brier            ECE
+A_cet                   0.668 ± 0.004  0.657 ± 0.005  0.226 ± 0.001  0.060 ± 0.007
+B_xgb_s                 0.576 ± 0.002  0.591 ± 0.003  0.323 ± 0.001  0.261 ± 0.003
+C_xgb_soft              0.665 ± 0.002  0.651 ± 0.005  0.231 ± 0.001  0.085 ± 0.006
+D_xgb_soft_cetfeat      0.667 ± 0.001  0.653 ± 0.003  0.230 ± 0.001  0.086 ± 0.006
+O_xgb_oracle            0.682 ± 0.002  0.665 ± 0.005  0.217 ± 0.001  0.015 ± 0.001
+
+Per event AUC (mean over seeds)
+A_cet                  event0: 0.775  event1: 0.560
+B_xgb_s                event0: 0.635  event1: 0.517
+C_xgb_soft             event0: 0.776  event1: 0.554
+D_xgb_soft_cetfeat     event0: 0.775  event1: 0.560
+O_xgb_oracle           event0: 0.785  event1: 0.578
+
+Soft label quality on censored TRAINING rows (out-of-fold, vs hidden true c)
+seed 0 event 0: AUC 0.860  mean w | c=1 0.572  mean w | c=0 0.369  Brier 0.171 (labeling all censored as 0: 0.345)
+seed 0 event 1: AUC 0.734  mean w | c=1 0.513  mean w | c=0 0.413  Brier 0.205 (labeling all censored as 0: 0.339)
+seed 1 event 0: AUC 0.856  mean w | c=1 0.582  mean w | c=0 0.379  Brier 0.174 (labeling all censored as 0: 0.341)
+seed 1 event 1: AUC 0.746  mean w | c=1 0.515  mean w | c=0 0.413  Brier 0.204 (labeling all censored as 0: 0.345)
+seed 2 event 0: AUC 0.860  mean w | c=1 0.586  mean w | c=0 0.380  Brier 0.174 (labeling all censored as 0: 0.342)
+seed 2 event 1: AUC 0.742  mean w | c=1 0.517  mean w | c=0 0.414  Brier 0.205 (labeling all censored as 0: 0.347)
+
+Paired bootstrap, 1000 resamples of test patients (difference, 95% CI)
+seed0  event0 C_xgb_soft − B_xgb_s AUC: +0.1456 [+0.1346, +0.1560]
+seed0  event0 C_xgb_soft − B_xgb_s Brier: -0.0981 [-0.1063, -0.0903]
+seed0  event1 C_xgb_soft − B_xgb_s AUC: +0.0354 [+0.0273, +0.0437]
+seed0  event1 C_xgb_soft − B_xgb_s Brier: -0.0924 [-0.1010, -0.0847]
+seed0  event0 C_xgb_soft − A_cet AUC: -0.0039 [-0.0075, -0.0002]
+seed0  event0 C_xgb_soft − A_cet Brier: +0.0022 [+0.0010, +0.0035]
+seed0  event1 C_xgb_soft − A_cet AUC: -0.0060 [-0.0190, +0.0061]
+seed0  event1 C_xgb_soft − A_cet Brier: +0.0049 [+0.0033, +0.0066]
+seed0  event0 D_xgb_soft_cetfeat − C_xgb_soft AUC: -0.0015 [-0.0032, +0.0004]
+seed0  event0 D_xgb_soft_cetfeat − C_xgb_soft Brier: +0.0009 [+0.0004, +0.0014]
+seed0  event1 D_xgb_soft_cetfeat − C_xgb_soft AUC: +0.0046 [+0.0007, +0.0084]
+seed0  event1 D_xgb_soft_cetfeat − C_xgb_soft Brier: -0.0008 [-0.0012, -0.0004]
+seed1  event0 C_xgb_soft − B_xgb_s AUC: +0.1484 [+0.1382, +0.1595]
+seed1  event0 C_xgb_soft − B_xgb_s Brier: -0.1009 [-0.1087, -0.0931]
+seed1  event1 C_xgb_soft − B_xgb_s AUC: +0.0351 [+0.0261, +0.0439]
+seed1  event1 C_xgb_soft − B_xgb_s Brier: -0.0824 [-0.0902, -0.0740]
+seed1  event0 C_xgb_soft − A_cet AUC: +0.0018 [-0.0025, +0.0057]
+seed1  event0 C_xgb_soft − A_cet Brier: +0.0009 [-0.0004, +0.0022]
+seed1  event1 C_xgb_soft − A_cet AUC: +0.0025 [-0.0131, +0.0196]
+seed1  event1 C_xgb_soft − A_cet Brier: +0.0067 [+0.0049, +0.0084]
+seed1  event0 D_xgb_soft_cetfeat − C_xgb_soft AUC: +0.0002 [-0.0018, +0.0022]
+seed1  event0 D_xgb_soft_cetfeat − C_xgb_soft Brier: +0.0001 [-0.0004, +0.0007]
+seed1  event1 D_xgb_soft_cetfeat − C_xgb_soft AUC: +0.0043 [-0.0000, +0.0082]
+seed1  event1 D_xgb_soft_cetfeat − C_xgb_soft Brier: -0.0004 [-0.0008, +0.0001]
+seed2  event0 C_xgb_soft − B_xgb_s AUC: +0.1280 [+0.1168, +0.1391]
+seed2  event0 C_xgb_soft − B_xgb_s Brier: -0.0978 [-0.1066, -0.0898]
+seed2  event1 C_xgb_soft − B_xgb_s AUC: +0.0413 [+0.0322, +0.0500]
+seed2  event1 C_xgb_soft − B_xgb_s Brier: -0.0839 [-0.0921, -0.0762]
+seed2  event0 C_xgb_soft − A_cet AUC: +0.0025 [-0.0009, +0.0062]
+seed2  event0 C_xgb_soft − A_cet Brier: +0.0030 [+0.0016, +0.0045]
+seed2  event1 C_xgb_soft − A_cet AUC: -0.0158 [-0.0295, -0.0021]
+seed2  event1 C_xgb_soft − A_cet Brier: +0.0074 [+0.0058, +0.0091]
+seed2  event0 D_xgb_soft_cetfeat − C_xgb_soft AUC: -0.0013 [-0.0029, +0.0005]
+seed2  event0 D_xgb_soft_cetfeat − C_xgb_soft Brier: -0.0013 [-0.0018, -0.0008]
+seed2  event1 D_xgb_soft_cetfeat − C_xgb_soft AUC: +0.0090 [+0.0045, +0.0136]
+seed2  event1 D_xgb_soft_cetfeat − C_xgb_soft Brier: -0.0009 [-0.0014, -0.0006]
